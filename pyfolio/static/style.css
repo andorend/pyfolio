@@ -1,0 +1,110 @@
+html *
+{
+  font-family: 'Space Mono', monospace !important;;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container-1 {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.box {
+  flex: 1 0 21%;
+  min-width: 220px;
+  padding: 5px;
+  padding-left: 25px;
+  display: flex;
+  border: thin solid darkgray;
+}
+
+.placeholder {
+  flex: 1 0 21%;
+  min-width: 200px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.profile {
+  flex: 1;
+  padding-left: 20px;
+  background-color: #A9A9A9;
+  padding-bottom: 40px;
+}
+
+@media screen {
+  .highlighted {
+    width:100%;
+  }
+}
+
+@media screen and (min-width: 456px) {
+  .highlighted {
+    flex: 1;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 677px) {
+  .highlighted {
+    flex: 2;
+    padding-left: 40px;
+  }
+}
+
+@media screen and (min-width: 897px) {
+  .highlighted {
+    flex: 3;
+    padding-left: 60px;
+  }
+}
+
+
+
+.supertitle {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-right: 30px;
+}
+
+.title {
+  margin-top: 5px;
+  padding-right: 30px;
+}
+
+.subtitle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 30px;
+}
+
+.hashtags {
+  padding-right: 30px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.content {
+  padding: 0em;
+}
+
+.box:not(:last-child) {
+  margin-bottom: 0em;
+}
+
+.group {
+  width: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.group span {
+  white-space: nowrap;
+  transform: rotate(-90deg);
+}

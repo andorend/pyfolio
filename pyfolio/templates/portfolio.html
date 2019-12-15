@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+{% block body %}
+
+<script type="text/javascript"
+         src="{{ url_for('static', filename='portfolio.js') }}"></script>
+<link rel="stylesheet" href='/static/style.css' />
+<div class="container-1">
+  <div class="profile">
+    <h5 class="personal">PERSONAL INFO</h5>
+    {% set profile = portfolio.person %}
+    <h1>
+      {{ profile.name }}
+    </h1>
+    <h3 class="birth">{{ profile.birth }} ({{profile.nation}})</h3>
+    <h4 class="contact">Contact information</h4>
+    {% for key, value in profile.contact_info.items() %}
+      {% set value_is_link = value[:4] == "http" %}
+        {% if value_is_link %}
+          <a href="{{ value }}" target="_blank">
+          {{ key }}
+          </a>
+        {% else %}
+          {{ key }}: {{ value}}
+        {% endif %}
+        <br>
+    {% endfor %}
+    <h4>Languages</h4>
+    {% for key, value in profile.languages.items() %}
+      {{ key }}: {{ value }}<br>
+    {% endfor %}
+    <h4>Hobbies</h4>
+    {% for tag in profile.hobbies %}
+      <a class="hashtag" onmouseover="hashtag_func(this)">#{{ tag }}</a>
+    {% endfor %}
+  </div>
+  <div class="highlighted">
+    <h1>
+       01
+    </h1>
+  </div>
+
+</div>
+<div class="container-1">
+  {% for project in portfolio.projects %}
+    {% set group = portfolio.groups[project.group] %}
+    {% set bg_color = group.bg_color %}
+    <div id="box{{ loop.index }}" class="box box-{{ loop.index }}"
+         style="background-color:{{ randomize_color(bg_color, 20) }};
+                color:{{ group.text_color }}; width: 100%;">
+      <div class="content">
+        {% if project.supertitle is defined %}
+          <h5 class="supertitle">{{ project.supertitle }}</h5>
+        {% else %}
+          <h5 class="supertitle">.</h5>
+        {% endif %}
+
+        {% set link_available = project.link != None and project.link is defined %}
+        <h4 class="title">
+          {% if link_available %}
+            <a href="{{ project.link }}" target="_blank" style="color:white;">
+          {% endif %}
+          {{ project.title }}
+          {% if link_available %}
+            </a>
+          {% endif %}
+        </h4>
+
+        {% if project.subtitle is defined %}
+          <h5 class="subtitle">{{ project.subtitle }}</h5>
+        {% endif %}
+        <div class="hashtags">
+          {% for tag in project.tags %}
+          <a class="hashtag" onmouseover="hashtag_func(this)">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="group">
+        <span>{{ project.group }}</span>
+      </div>
+    </div>
+  {% endfor %}
+  {% for placeholder in range(3) %}
+    <div class="placeholder"></div>
+  {% endfor %}
+</div>
+{% endblock %}
