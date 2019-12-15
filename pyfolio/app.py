@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 
 from helper_functions import randomize_color, load_json_portfolio, prettify_html
 
@@ -19,3 +20,7 @@ def portfolio_page(name: str = "pytfolio") -> str:
                                          portfolio=portfolio,
                                          randomize_color=randomize_color,
                                          features="html.parser"))
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
