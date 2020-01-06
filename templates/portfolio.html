@@ -12,6 +12,7 @@
       {{ profile.name }}
     </h1>
     <h3 class="birth">{{ profile.birth }} ({{profile.nation}})</h3>
+    <br>
     <h4 class="contact">Contact information</h4>
     {% for key, value in profile.contact_info.items() %}
       {% set value_is_link = value[:4] == "http" %}
@@ -24,13 +25,21 @@
         {% endif %}
         <br>
     {% endfor %}
+    <br>
     <h4>Languages</h4>
     {% for key, value in profile.languages.items() %}
       {{ key }}: {{ value }}<br>
     {% endfor %}
+    <br>
     <h4>Hobbies</h4>
     {% for tag in profile.hobbies %}
-      <a class="hashtag" onmouseover="hashtag_func(this)">#{{ tag }}</a>
+      <a class="hashtag"
+         onmouseover="hashtag_mouseover(this)"
+         onmouseout="hashtag_mouseout(this)"
+         onclick="hashtag_clicked(this)"
+         style="cursor: pointer;">
+        #{{ tag }}
+      </a>
     {% endfor %}
   </div>
   <div class="highlighted">
@@ -70,7 +79,13 @@
         {% endif %}
         <div class="hashtags">
           {% for tag in project.tags %}
-          <a class="hashtag" onmouseover="hashtag_func(this)">#{{ tag }}</a>
+          <a class="hashtag"
+             onmouseover="hashtag_mouseover(this)"
+             onmouseout="hashtag_mouseout(this)"
+             onclick="hashtag_clicked(this)"
+             style="cursor: pointer;">
+            #{{ tag }}
+          </a>
           {% endfor %}
         </div>
       </div>
