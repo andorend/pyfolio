@@ -34,8 +34,8 @@
     <h4>Hobbies</h4>
     {% for tag in profile.hobbies %}
       <a class="hashtag"
-         onmouseover="hashtag_mouseover(this)"
-         onmouseout="hashtag_mouseout(this)"
+         onmouseover="hashtag_mouseover(this)" ontouchstart="hashtag_mouseover(this)"
+         onmouseout="hashtag_mouseout(this)" ontouchend="hashtag_mouseout(this)" ontouchcancel="hashtag_mouseout(this)"
          onclick="hashtag_clicked(this)"
          style="cursor: pointer;">
         #{{ tag }}
@@ -80,8 +80,8 @@
         <div class="hashtags">
           {% for tag in project.tags %}
           <a class="hashtag"
-             onmouseover="hashtag_mouseover(this)"
-             onmouseout="hashtag_mouseout(this)"
+             onmouseover="hashtag_mouseover(this)" ontouchstart="hashtag_mouseover(this)"
+             onmouseout="hashtag_mouseout(this)" ontouchend="hashtag_mouseout(this)" ontouchcancel="hashtag_mouseout(this)"
              onclick="hashtag_clicked(this)"
              style="cursor: pointer;">
             #{{ tag }}
