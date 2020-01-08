@@ -1,9 +1,10 @@
 {% extends "index.html" %}
 {% block body %}
-<body onresize="adjust_box_size()" onload="adjust_box_size()">
 <script type="text/javascript"
          src="{{ url_for('static', filename='portfolio.js') }}"></script>
 <link rel="stylesheet" href='/static/style.css' />
+
+<body onresize="adjust_box_size()" onload="adjust_box_size()">
 <div class="container-1">
   <div class="profile">
     <div class="inner-profile">
