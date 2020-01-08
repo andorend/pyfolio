@@ -31,41 +31,41 @@ html *
   min-width: 270px;
   padding: 5px;
   padding-left: 10px;
+  background-color: white;
 }
 
 .profile {
   flex: 1;
   min-width: 270px;
-  padding-left: 20px;
   background-color: #303030;
+
+}
+
+.inner-profile {
+  padding-left: 20px;
+  padding-right: 30px;
   padding-bottom: 40px;
+  border: thin solid darkgray;
 }
 
-@media screen {
-  .highlighted {
-    width:100%;
-  }
+.profile-picture {
+  border-radius: 50%;
 }
 
-@media screen and (min-width: 556px) {
-  .highlighted {
-    flex: 1;
-    padding-left: 20px;
-  }
+.highlighted-header{
+  background-color: #303030;
+  padding: 20px;
 }
 
-@media screen and (min-width: 827px) {
-  .highlighted {
-    flex: 2;
-    padding-left: 40px;
-  }
+.box-highlighted{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  text-size: 32px;
 }
 
-@media screen and (min-width: 1097px) {
-  .highlighted {
-    flex: 3;
-    padding-left: 60px;
-  }
+.highlighted {
+width:100%;
 }
 
 .supertitle {

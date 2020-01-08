@@ -1,13 +1,16 @@
 {% extends "index.html" %}
 {% block body %}
-
+<body onresize="adjust_box_size()" onload="adjust_box_size()">
 <script type="text/javascript"
          src="{{ url_for('static', filename='portfolio.js') }}"></script>
 <link rel="stylesheet" href='/static/style.css' />
 <div class="container-1">
   <div class="profile">
+    <div class="inner-profile">
     <h5 class="personal">PERSONAL INFO</h5>
     {% set profile = portfolio.person %}
+    <br>
+    <img class="profile-picture" src={{ profile.image }}>
     <h1>
       {{ profile.name }}
     </h1>
@@ -42,12 +45,57 @@
       </a>
     {% endfor %}
   </div>
-  <div class="highlighted">
-    <h1>
-       01
-    </h1>
   </div>
+  <div class="highlighted">
+      <h1 class="highlighted-header">Highlighted project:</h1>
+    {# Show the highlighted project in the highlighting area #}
+    {% for project in portfolio.projects if project.highlighted %}
+      {% set group = portfolio.groups[project.group] %}
+      {% set bg_color = group.bg_color %}
+      <div id="box-highlighted" class="box box-highlighted"
+        style="background-color:{{ randomize_color(bg_color, 20) }};
+               color:{{ group.text_color }};
+               ">
 
+        <div class="content">
+          {% if project.supertitle is defined %}
+            <h2 class="supertitle">{{ project.supertitle }}</h2>
+          {% else %}
+            <h2 class="supertitle">.</h2>
+          {% endif %}
+
+          {% set link_available = project.link != None and project.link is defined %}
+          <h1 class="title">
+            {% if link_available %}
+              <a href="{{ project.link }}" target="_blank" style="color:white;">
+            {% endif %}
+            {{ project.title }}
+            {% if link_available %}
+              </a>
+            {% endif %}
+          </h1>
+
+          {% if project.subtitle is defined %}
+            <h2 class="subtitle">{{ project.subtitle }}</h2>
+          {% endif %}
+          <div class="hashtags">
+            {% for tag in project.tags %}
+              <a class="hashtag"
+                 onmouseover="hashtag_mouseover(this)" ontouchstart="hashtag_mouseover(this)"
+                 onmouseout="hashtag_mouseout(this)" ontouchend="hashtag_mouseout(this)" ontouchcancel="hashtag_mouseout(this)"
+                 onclick="hashtag_clicked(this)"
+                 style="cursor: pointer; font-size: 24px">
+                #{{ tag }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="group">
+          <span>{{ project.group }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 <div class="container-1">
   {% for project in portfolio.projects %}
@@ -98,4 +146,5 @@
     <div class="placeholder"></div>
   {% endfor %}
 </div>
+</body>
 {% endblock %}

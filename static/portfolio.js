@@ -93,3 +93,13 @@ function hashtag_mouseout(active_hashtag) {
     }
   }
 };
+
+function adjust_box_size() {
+  var highlighted = document.getElementsByClassName("highlighted")[0];
+  var placeholder_width = document.getElementsByClassName("placeholder")[0].offsetWidth;
+  var window_width = window.innerWidth;
+  var nr_of_project_per_line = parseInt(Math.round(window_width / placeholder_width));
+  var highlighted_flex = Math.max(nr_of_project_per_line - 1, 1);
+
+  highlighted.style.setProperty("flex", highlighted_flex);
+}
