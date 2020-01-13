@@ -10,3 +10,9 @@ To test/run the Flask app in Windows:
     - ```flask run```
 
 - Open the shown link in the browser.
+
+- Working demo: https://pyfolio-andor-hofecker.herokuapp.com/
+
+
+
+Feel free to fork but do not use my personal information.

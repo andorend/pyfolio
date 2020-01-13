@@ -48,7 +48,7 @@
   </div>
   </div>
   <div class="highlighted">
-      <h1 class="highlighted-header">Highlighted project:</h1>
+    <h1 class="welcome-header">Welcome to Pyfolio!</h1>
     {# Show the highlighted project in the highlighting area #}
     {% for project in portfolio.projects if project.highlighted %}
       {% set group = portfolio.groups[project.group] %}
@@ -90,10 +90,14 @@
               </a>
             {% endfor %}
           </div>
+          <br>
+          <h1><mark class="instructions">Click on a #hashtag to filter the cards below,
+          click the #hashtag again to remove the filter. Click the link of a card's title to view additional info.</mark></h1>
         </div>
         <div class="group">
           <span>{{ project.group }}</span>
         </div>
+        <h3></h3>
       </div>
     {% endfor %}
   </div>

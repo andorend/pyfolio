@@ -13,6 +13,8 @@ html *
 .container-1 {
   display: flex;
   flex-flow: wrap;
+
+  background-color: #303030;
 }
 
 .box {
@@ -52,7 +54,22 @@ html *
   border-radius: 50%;
 }
 
-.highlighted-header{
+.welcome-header {
+  background-color: #303030;
+  padding: 20px;
+}
+
+.instruciton-h1{
+  padding-bottom: 15px;
+}
+
+.instructions {
+  color: black;
+  height: 100%;
+  line-height: 180%;
+}
+
+.highlighted-header {
   background-color: #303030;
   padding: 20px;
 }
@@ -65,7 +82,7 @@ html *
 }
 
 .highlighted {
-width:100%;
+  width:100%;
 }
 
 .supertitle {
