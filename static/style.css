@@ -51,7 +51,7 @@ html *
 }
 
 .profile-picture {
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .welcome-header {
