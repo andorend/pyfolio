@@ -6,7 +6,7 @@ You can use this pyhton file to generate the JSON"
 portfolio = {"person": {"name": "Hofecker Andor",
                         "birth": "03.06.1989",
                         "nation": "HU",
-                        "image": "https://media.licdn.com/dms/image/C4E03AQGulaLcG7P29g/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=xAo_sXyXAhw-wWsxmXlXpVBdOTOmV3jZ6Qoi9tJae04",
+                        "image": "https://media-exp1.licdn.com/dms/image/C4E03AQGulaLcG7P29g/profile-displayphoto-shrink_200_200/0/1517471745868?e=1616025600&v=beta&t=WadV-98pFtYm2TrqOeNStl99d3tNFvcTbAr_Ed_dvDA",
                         "contact_info":
                             {"E-mail": "hof.and.or@gmail.com",
                              "Phone": "+36 (20) 965 7032",
