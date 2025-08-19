@@ -4,7 +4,7 @@ person:
   nation: "HU"
   image: "https://media.licdn.com/dms/image/v2/D4D03AQFpe7zWQJBYfA/profile-displayphoto-scale_200_200/B4DZjCFdlMHYAc-/0/1755602869141?e=1758758400&v=beta&t=hkTeORXGw-SAtegnp2HI8NphBXFINZklYQ7Zxs2cd-E"
   contact_info:
-    E-mail: "hof.and.or@gmail.com"
+    E-mail: "andor.hofecker@hu.bosch.com"
     Phone: "+36 (20) 965 7032"
     LinkedIn: "https://www.linkedin.com/in/andor-hofecker-58887791/"
     Kaggle: "https://www.kaggle.com/andorhofecker"
@@ -17,7 +17,6 @@ person:
     - "videography"
     - "prototype"
     - "run"
-    - "cycle"
     - "cycle"
     - "paint"
 

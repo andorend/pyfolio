@@ -133,7 +133,8 @@ html *
   align-items: center;
 }
 
-.group span {
+.group a {
   white-space: nowrap;
   transform: rotate(-90deg);
+  text-decoration: none;
 }

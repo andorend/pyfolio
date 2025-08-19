@@ -95,7 +95,13 @@
           click the #hashtag again to remove the filter. Click the link in a card's title to view additional info.</mark></h1>
         </div>
         <div class="group">
-          <span>{{ project.group }}</span>
+          <a class="hashtag"
+             onmouseover="hashtag_mouseover(this)" ontouchstart="hashtag_mouseover(this)"
+             onmouseout="hashtag_mouseout(this)" ontouchend="hashtag_mouseout(this)" ontouchcancel="hashtag_mouseout(this)"
+             onclick="hashtag_clicked(this)"
+             style="cursor: pointer; font-size: 18px">
+            #{{ project.group }}
+          </a>
         </div>
         <h3></h3>
       </div>
@@ -143,7 +149,13 @@
         </div>
       </div>
       <div class="group">
-        <span>{{ project.group }}</span>
+        <a class="hashtag"
+           onmouseover="hashtag_mouseover(this)" ontouchstart="hashtag_mouseover(this)"
+           onmouseout="hashtag_mouseout(this)" ontouchend="hashtag_mouseout(this)" ontouchcancel="hashtag_mouseout(this)"
+           onclick="hashtag_clicked(this)"
+           style="cursor: pointer;">
+          #{{ project.group }}
+        </a>
       </div>
     </div>
   {% endfor %}
