@@ -131,3 +131,7 @@ dmypy.json
 
 # PyCharm .idea files
 .idea/
+
+# Ignore generated HTML and PDF files
+*.html
+*.pdf
