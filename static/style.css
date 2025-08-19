@@ -51,7 +51,17 @@ html *
 }
 
 .profile-picture {
-  /* border-radius: 50%; */
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #505050;
+  margin-bottom: 15px;
+  display: block;
+  /* Force aspect ratio to be 1:1 */
+  aspect-ratio: 1 / 1;
+  /* Ensure the image is treated as a block element */
+  box-sizing: border-box;
 }
 
 .welcome-header {
