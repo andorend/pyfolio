@@ -31,11 +31,11 @@ class PersonModel(BaseModel):
 class ProjectModel(BaseModel):
     """Pydantic model for project information"""
     title: str = Field(..., min_length=1, description="Project title")
-    supertitle: Optional[str] = Field(None, description="Project supertitle (e.g., year)")
-    subtitle: Optional[str] = Field(None, description="Project subtitle or role")
+    supertitle: Optional[str] = Field("", description="Project supertitle (e.g., year)")
+    subtitle: Optional[str] = Field("", description="Project subtitle or role")
     group: str = Field(..., min_length=1, description="Project category/group")
-    link: Optional[HttpUrl] = Field(None, description="URL to project or related information")
-    image: Optional[HttpUrl] = Field(None, description="URL to project image")
+    link: Optional[HttpUrl] = Field("", description="URL to project or related information")
+    image: Optional[HttpUrl] = Field("", description="URL to project image")
     highlighted: bool = Field(False, description="Whether this project is highlighted")
     tags: List[str] = Field(..., min_items=1, description="List of technology/skill tags")
 

@@ -25,7 +25,7 @@ def test_yaml_loading():
 def test_data_validation():
     """Test data validation with invalid data"""
     print("\n🧪 Testing data validation with invalid data...")
-    
+
     # Test with missing required field
     invalid_data = {
         "person": {
@@ -34,12 +34,12 @@ def test_data_validation():
             "nation": "US",
             "contact_info": {},
             "languages": {},
-            "hobbies": []
+            "hobbies": [],
         },
         "projects": [],
-        "groups": {}
+        "groups": {},
     }
-    
+
     try:
         PortfolioModel(**invalid_data)
         print("❌ Validation should have failed!")
@@ -68,14 +68,14 @@ def test_yaml_structure():
     try:
         with open("portfolio.yaml", "r", encoding="utf-8") as f:
             raw_data = yaml.safe_load(f)
-        
+
         # Check main sections exist
         required_sections = ["person", "projects", "groups"]
         for section in required_sections:
             if section not in raw_data:
                 print(f"❌ Missing required section: {section}")
                 return False
-        
+
         # Check person section
         person = raw_data["person"]
         required_person_fields = ["name", "birth", "nation", "contact_info", "languages", "hobbies"]
@@ -83,10 +83,10 @@ def test_yaml_structure():
             if field not in person:
                 print(f"❌ Missing person field: {field}")
                 return False
-        
+
         print("✅ YAML structure is valid")
         return True
-        
+
     except Exception as e:
         print(f"❌ YAML structure test failed: {e}")
         return False
@@ -94,20 +94,20 @@ def test_yaml_structure():
 
 if __name__ == "__main__":
     print("🚀 Running Pyfolio YAML & Pydantic Tests\n")
-    
+
     tests = [
         test_yaml_structure,
         test_yaml_loading,
         test_data_validation,
-        test_backward_compatibility
+        test_backward_compatibility,
     ]
-    
+
     results = []
     for test in tests:
         results.append(test())
-    
+
     print(f"\n📈 Test Results: {sum(results)}/{len(results)} tests passed")
-    
+
     if all(results):
         print("🎉 All tests passed! The YAML/Pydantic integration is working correctly.")
     else:
