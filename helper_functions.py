@@ -1,30 +1,66 @@
 import random
 import webcolors
-import json
+import yaml
 from bs4 import BeautifulSoup
+from pydantic import ValidationError
+from models import PortfolioModel
 
 
 def prettify_html(html: str) -> str:
     """
     Create beautiful HTML using BeautifulSoup
-
+    
     :param html: The input raw HTML
     :return: The beautiful HTML
     """
+    
+    try:
+        soup = BeautifulSoup(html, 'html.parser')
+        return soup.prettify()
+    except Exception as e:
+        # If BeautifulSoup fails, return the original HTML
+        # This provides a fallback in case of compatibility issues
+        print(f"Warning: BeautifulSoup prettify failed ({e}), returning original HTML")
+        return html
 
-    soup = BeautifulSoup(html)
-    return soup.prettify()
 
-
-def load_json_portfolio(path: str = "portfolio.json") -> dict:
+def load_yaml_portfolio(path: str = "portfolio.yaml") -> PortfolioModel:
     """
-    Load the the json data as a dict.
-    :param path: path of the json
-    :return: the dict containing the portfolio
+    Load and validate the YAML portfolio data using Pydantic.
+    
+    :param path: path of the YAML file
+    :return: the validated PortfolioModel instance containing the portfolio
+    :raises ValidationError: if the YAML data doesn't match the expected schema
+    :raises FileNotFoundError: if the YAML file doesn't exist
+    :raises yaml.YAMLError: if the YAML file is malformed
     """
+    
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            raw_data = yaml.safe_load(f)
+        
+        # Validate and parse the data using Pydantic
+        portfolio = PortfolioModel(**raw_data)
+        return portfolio
+        
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Portfolio file not found: {path}")
+    except yaml.YAMLError as e:
+        raise yaml.YAMLError(f"Error parsing YAML file {path}: {e}")
+    except ValidationError as e:
+        raise ValidationError(f"Portfolio data validation failed: {e}")
 
-    with open("portfolio.json", "r") as f:
-        return json.loads(f.read())
+
+def load_portfolio_as_dict(path: str = "portfolio.yaml") -> dict:
+    """
+    Load the YAML portfolio data and return as a dictionary for backward compatibility.
+    
+    :param path: path of the YAML file
+    :return: the portfolio data as a dictionary
+    """
+    portfolio_model = load_yaml_portfolio(path)
+    # Convert Pydantic model to dictionary, handling nested models and URL objects
+    return portfolio_model.model_dump(mode='python')
 
 
 def int_to_hex(i: int) -> str:

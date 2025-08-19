@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 import os
 
-from helper_functions import randomize_color, load_json_portfolio, prettify_html
+from helper_functions import randomize_color, load_portfolio_as_dict, prettify_html
 
 app = Flask(__name__)
 
-portfolio = load_json_portfolio()
+portfolio = load_portfolio_as_dict()
 
 @app.route('/')
 def portfolio_page(name: str = "pytfolio") -> str:
@@ -23,4 +23,4 @@ def portfolio_page(name: str = "pytfolio") -> str:
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='localhost', port=port)

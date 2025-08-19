@@ -1,7 +1,10 @@
 """
-If you are better with Python data types than JSON directly
-You can use this pyhton file to generate the JSON"
+If you are better with Python data types than YAML directly
+You can use this Python file to generate the YAML
 """
+
+import yaml
+from models import PortfolioModel
 
 portfolio = {"person": {"name": "Hofecker Andor",
                         "birth": "03.06.1989",
@@ -566,14 +569,28 @@ portfolio = {"person": {"name": "Hofecker Andor",
              }
 
 if __name__ == "__main__":
-    import json
-    from helper_functions import load_json_portfolio
+    from helper_functions import load_yaml_portfolio
 
-    portfolio_path = "portfolio.json"
+    portfolio_path = "portfolio.yaml"
 
-    # Write out the JSON file
-    with open(portfolio_path, "w") as f:
-        f.write(json.dumps(portfolio))
+    # Create and validate the portfolio using Pydantic
+    try:
+        portfolio_model = PortfolioModel(**portfolio)
+        print("✅ Portfolio data validation successful!")
+        
+        # Write out the YAML file
+        with open(portfolio_path, "w", encoding="utf-8") as f:
+            yaml.dump(portfolio, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        print(f"✅ YAML file written to {portfolio_path}")
 
-    # Test: if the written file is the same as the read back
-    assert load_json_portfolio(portfolio_path) == portfolio
+        # Test: if the written file can be loaded and validated
+        loaded_portfolio = load_yaml_portfolio(portfolio_path)
+        print("✅ YAML file loads and validates correctly!")
+        
+        # Compare original data with loaded data
+        assert loaded_portfolio.model_dump(mode='python') == portfolio_model.model_dump(mode='python')
+        print("✅ Data integrity check passed!")
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        raise
