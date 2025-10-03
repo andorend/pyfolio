@@ -135,3 +135,4 @@ dmypy.json
 # Ignore generated HTML and PDF files
 *.html
 *.pdf
+!Andor_HOFECKER_portfolio.html
